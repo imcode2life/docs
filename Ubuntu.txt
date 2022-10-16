@@ -1,0 +1,13 @@
+If you want ubuntu-desktop, then:
+sudo apt install ubuntu-desktop
+
+If you want xfce4, then:
+sudo apt install xfce4 xfce4-goodies xorg dbus-x11 x11-xserver-utils
+
+If you want to connect via rdp,  then:
+sudo apt install xrdp xorgxrdp
+
+If you want connect via vnc, then:
+sudo apt install tightvncserver
+
+vncserver

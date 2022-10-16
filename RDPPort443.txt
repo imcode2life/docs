@@ -1,0 +1,16 @@
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+
+- Method 1
+Start the registry editor. ... Navigate to the following registry subkey:
+ HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp. Find PortNumber. 
+Click Edit > Modify, and then click Decimal. Type the new port number, and then click OK.
+Close the registry editor, and restart your computer. 
+
+- Method 2
+You can check the current port by running the following PowerShell command: 
+Get-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "PortNumber"
+
+To add a new RDP Port to the registry: 
+Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "PortNumber" -Value 443
+
+New-NetFirewallRule -DisplayName 'RDPPORTLatest' -Profile 'Public' -Direction Inbound -Action Allow -Protocol TCP -LocalPort 443
